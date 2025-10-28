@@ -1,0 +1,23 @@
+{
+  "name": "hw-3-express-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Juliojefe/HW-3-Express-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Juliojefe/HW-3-Express-App/issues"
+  },
+  "homepage": "https://github.com/Juliojefe/HW-3-Express-App#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
