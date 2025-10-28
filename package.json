@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Juliojefe/HW-3-Express-App#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "rick-and-morty-forever": "^0.0.15"
   }
 }
