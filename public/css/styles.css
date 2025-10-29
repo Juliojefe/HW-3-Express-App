@@ -12,45 +12,52 @@ body {
   align-items: center;
   gap: 20px;
   background-color: #4EAFAC;
-  padding: 10px;
+  padding: 20px;
+  border: 1px solid black;
 }
 
-#navDiv p {
+#navDiv a {
+  display: inline-block;
+  text-decoration: none;
   border: 3px solid #EECA4A;
   color: #A03D53;
   background-color: white;
-  padding: 4px 12px;
+  font-size: larger;
+  font-weight: bold;
+  padding: 15px 30px;
   margin: 0;
 }
 
-#navDiv p:hover {
+#navDiv a:hover {
   background-color: #EECA4A;
   color: #4EAFAC;
 }
 
-#navDiv p:active {
+#navDiv a.active {
   background-color: #A03D53;
   color: white;
 }
 
 #cardContainer {
-  /* max-width: 700px;  */
-  max-width: 80%;
-  background: rgba(255, 255, 255, 0.75); 
+  max-width: 50%;
+  background: white; 
   backdrop-filter: blur(4px); 
-  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+  box-shadow: 0 0 20px rgba(0,0,0,0.30);
+  border: 1px solid black;
 }
 
 #column {
-  max-height: 500px; 
+  max-height: 90%; 
   overflow-y: auto;
 }
 
 #centerPiece {
   width: 100%;
+  height: 100%;
 }
 
 #cards {
   width: 70%;
-  height: 80%;
+  height: 100%;
+    border: 1px solid black;
 }

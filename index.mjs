@@ -25,7 +25,8 @@ app.get("/characters", async (req, res) => {
       characters: cookedData.results,
       nextPage: nextPage,
       prevPage: prevPage,
-      currentPage: page
+      currentPage: page,
+      active: 'characters'
    });
 });
 
