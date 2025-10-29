@@ -4,7 +4,8 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 app.get('/', (req, res) => {
-   res.send('Hello Express app!')
+   // res.send('Hello Express app!')
+   res.render("character.ejs");
 });
 
 app.listen(3000, () => {
