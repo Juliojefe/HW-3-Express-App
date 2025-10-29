@@ -14,7 +14,38 @@
 </head>
 
 <body>
+  <%- include("partials/nav.ejs") %>
 
+  <div class="container mt-4 p-4 rounded-4" id="cardContainer">
+    <div class="d-flex flex-column align-items-center" id="column">
+      <h3><%= character.name %></h3>
+      <img src="<%= character.image %>" alt="<%= character.name %>">
+
+      <p>
+        Status: <%= character.status %> |
+        Species: <%= character.species %> |
+        Gender: <%= character.gender %>
+      </p>
+
+      <p>
+        Origin: <%= character.origin.name %> |
+        Featured in <%= character.episode.length %> episodes
+      </p>
+
+      <% if (residents && residents.length > 0) { %>
+        <h4>These characters are also from <%= character.origin.name %>:</h4>
+
+        <div class="d-flex flex-column align-items-center" id="column">
+          <% residents.forEach(char => { %>
+            <div class="mb-4 d-flex justify-content-center" id="centerPiece">
+              <%- include("partials/charCard.ejs", { character: char }) %>
+            </div>
+          <% }) %>
+        </div>
+      <% } %>
+    </div>
+  </div>
 </body>
+
 
 </html>
