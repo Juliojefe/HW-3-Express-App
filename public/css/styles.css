@@ -1,5 +1,5 @@
 body {
-  background-image: url("/img/rm.png");
+  background-image: url("/img/rm1.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -11,7 +11,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 20px;
-  background-color: #4EAFAC;
+  background-color: #415558;
   padding: 20px;
   border: 1px solid black;
 }

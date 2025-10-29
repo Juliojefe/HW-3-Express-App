@@ -33,7 +33,8 @@
       </p>
 
       <% if (residents && residents.length > 0) { %>
-        <h4>These characters are also from <%= character.origin.name %>:</h4>
+        <br>
+        <h3>These characters are also from <%= character.origin.name %></h3>
 
         <div class="d-flex flex-column align-items-center" id="column">
           <% residents.forEach(char => { %>
