@@ -1,0 +1,34 @@
+body {
+  background-image: url("/img/rm.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+#navDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: #4EAFAC;
+  padding: 10px;
+}
+
+#navDiv p {
+  border: 3px solid #EECA4A;
+  color: #A03D53;
+  background-color: white;
+  padding: 4px 12px;
+  margin: 0;
+}
+
+#navDiv p:hover {
+  background-color: #EECA4A;
+  color: #4EAFAC;
+}
+
+#navDiv p:active {
+  background-color: #A03D53;
+  color: white;
+}
