@@ -32,3 +32,19 @@ body {
   background-color: #A03D53;
   color: white;
 }
+
+#cardContainer {
+  max-width: 700px; 
+  background: rgba(255, 255, 255, 0.75); 
+  backdrop-filter: blur(4px); 
+  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
+
+#column {
+  max-height: 500px; 
+  overflow-y: auto;
+}
+
+#centerPiece {
+  width: 100%;
+}

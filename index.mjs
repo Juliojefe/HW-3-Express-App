@@ -3,30 +3,35 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
-let currPage = "https://rickandmortyapi.com/api/character/?page=1";
-
-app.get('/', async (req, res) => {
-   if (currPage == null || currPage.length <= 0) {
-      currPage = "https://rickandmortyapi.com/api/character/?page=1";
+app.get("/characters", async (req, res) => {
+   let page;
+   if (req.query.page) {   // default to page 1 if no page provided
+      page = parseInt(req.query.page);
+   } else {
+      page = 1;
    }
-   const rawRes = await fetch(currPage);
-   const cookedRes = await rawRes.json();
-   currPage = cookedRes.info.next;
-   res.render("characters.ejs", { characters: cookedRes.results, hasNext: cookedRes.info.next !== null });
-
+   const url = `https://rickandmortyapi.com/api/character/?page=${page}`;
+   const rawData = await fetch(url);
+   const cookedData = await rawData.json();
+   let nextPage = null;
+   let prevPage = null;
+   if (cookedData.info.next !== null) {
+      nextPage = page + 1;
+   }
+   if (cookedData.info.prev !== null) {
+      prevPage = page - 1;
+   }
+   res.render("characters.ejs", {
+      characters: cookedData.results,
+      nextPage: nextPage,
+      prevPage: prevPage,
+      currentPage: page
+   });
 });
 
-// app.get('/', (req, res) => {
-//    res.render("character.ejs");
-// });
-
-// app.get('/', (req, res) => {
-//    res.render("character.ejs");
-// });
-
-// app.get('/', (req, res) => {
-//    res.render("character.ejs");
-// });
+app.get("/", (req, res) => {
+   res.redirect("/characters");
+});
 
 app.listen(3000, () => {
    console.log('server started');
