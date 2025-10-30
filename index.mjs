@@ -74,15 +74,12 @@ app.get("/quotes", async (req, res) => {
    let min = 1;
    let range = max - min + 1;
    let rando = Math.floor(Math.random() * range) + min;
-
    let characters = { 1: "rick", 2: "morty", 3: "summer", 4: "beth" };
    let character = characters[rando];
    let characterQuote = quote(character);
-
    let charUrl = "https://rickandmortyapi.com/api/character/" + rando;
    let charRawData = await fetch(charUrl);
    let charCookedData = await charRawData.json();
-
    res.render("quote.ejs", {
       character: charCookedData,
       quote: characterQuote,
