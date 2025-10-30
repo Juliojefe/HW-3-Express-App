@@ -15,7 +15,11 @@
   <%- include("partials/nav.ejs") %>
   <div class="container mt-4 p-4 rounded-4" id="cardContainer">
     <div class="d-flex flex-column align-items-center" id="column">
-      
+      <h3><%= character.name %></h3>
+      <img src="<%= character.image %>" alt="<%= character.name %>">
+
+      <p>"<%= quote %>"</p>
+
     </div>
   </div>
 
