@@ -87,9 +87,26 @@ app.get("/quotes", async (req, res) => {
    });
 });
 
-app.get("/search", async (req, res) => {
-   res.render("search.ejs", {
-      active: "search"
+app.get("/explore", async (req, res) => {
+   let url = "https://rickandmortyapi.com/api/location";
+   let rawData = await fetch(url);
+   let cookedData = await rawData.json();
+   // let locationInfo = {};
+   // for (var i = 0; i < cookedData.results.length; ++i) {
+   //    var curr = cookedData.results[i];
+   //    var name = curr.name;
+   //    var residentsData = await fetchResidents(curr.residents);
+   //    locationInfo[name] = {
+   //       name: curr.name,
+   //       type: curr.type,
+   //       dimension: curr.dimension,
+   //       residents: residentsData
+   //    };
+   // }
+   res.render("explore.ejs", {
+      // locations: locationInfo,
+      locations: cookedData.results,
+      active: "explore"
    });
 });
 
