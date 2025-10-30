@@ -90,6 +90,12 @@ app.get("/quotes", async (req, res) => {
    });
 });
 
+app.get("/search", async (req, res) => {
+   res.render("search.ejs", {
+      active: "search"
+   });
+});
+
 app.listen(3000, () => {
    console.log('server started');
 });
