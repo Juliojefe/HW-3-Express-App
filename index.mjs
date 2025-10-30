@@ -68,6 +68,10 @@ app.get("/character/:id", async (req, res) => {
    });
 });
 
+app.get("/quotes", async (req, res) => {
+   res.render("quote.ejs");
+});
+
 app.listen(3000, () => {
    console.log('server started');
 });
