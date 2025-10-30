@@ -2,7 +2,7 @@ import express from 'express';
 const app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public"));
-import rm from 'rick-and-morty-forever';
+import quote from "rick-and-morty-forever"; 
 
 // helper function to fetch multiple character objects from an array of URLs
 async function fetchResidents(residentUrls) {
@@ -77,15 +77,7 @@ app.get("/quotes", async (req, res) => {
 
    let characters = { 1: "rick", 2: "morty", 3: "summer", 4: "beth" };
    let character = characters[rando];
-
-   let quotesList = rm[character];
-   if (!quotesList) {
-      console.error("No quotes found for:", character);
-      return res.status(500).send("Character quotes not found.");
-   }
-   let quoteCount = quotesList.length;
-   let randomQuoteIndex = Math.floor(Math.random() * quoteCount);
-   let characterQuote = quotesList[randomQuoteIndex];
+   let characterQuote = quote(character);
 
    let charUrl = "https://rickandmortyapi.com/api/character/" + rando;
    let charRawData = await fetch(charUrl);
