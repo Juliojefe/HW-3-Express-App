@@ -2,21 +2,21 @@ import express from 'express';
 const app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public"));
-import quote from "rick-and-morty-forever"; 
+import quote from "rick-and-morty-forever";
 
 // helper function to fetch multiple character objects from an array of URLs
 async function fetchResidents(residentUrls) {
-  const residents = [];
-  if (!residentUrls || residentUrls.length === 0) {
-    return residents;
-  }
-  for (let i = 0; i < residentUrls.length; ++i) {
-   const url = residentUrls[i];
-   const response = await fetch(url);
-   const data = await response.json();
-   residents.push(data);
-  }
-  return residents;
+   const residents = [];
+   if (!residentUrls || residentUrls.length === 0) {
+      return residents;
+   }
+   for (let i = 0; i < residentUrls.length; ++i) {
+      const url = residentUrls[i];
+      const response = await fetch(url);
+      const data = await response.json();
+      residents.push(data);
+   }
+   return residents;
 }
 
 app.get("/characters", async (req, res) => {
@@ -91,21 +91,45 @@ app.get("/explore", async (req, res) => {
    let url = "https://rickandmortyapi.com/api/location";
    let rawData = await fetch(url);
    let cookedData = await rawData.json();
-   // let locationInfo = {};
-   // for (var i = 0; i < cookedData.results.length; ++i) {
-   //    var curr = cookedData.results[i];
-   //    var name = curr.name;
-   //    var residentsData = await fetchResidents(curr.residents);
-   //    locationInfo[name] = {
-   //       name: curr.name,
-   //       type: curr.type,
-   //       dimension: curr.dimension,
-   //       residents: residentsData
-   //    };
-   // }
+   let locationInfo = [];
+   for (let curr of cookedData.results) {
+      locationInfo.push({
+         name: curr.name,
+         locationId: curr.id
+      });
+   }
    res.render("explore.ejs", {
-      // locations: locationInfo,
-      locations: cookedData.results,
+      locations: locationInfo,
+      residents: null,
+      selected: null,
+      active: "explore"
+   });
+});
+
+app.get("/explore/location", async (req, res) => {
+   let locationId = parseInt(req.query.locationId);
+   let url = "https://rickandmortyapi.com/api/location";
+   let rawData = await fetch(url);
+   let cookedData = await rawData.json();
+   let locationInfo = [];
+   let selected;
+   for (let curr of cookedData.results) {
+      if (curr.id === locationId) {
+         selected = curr;
+      }
+      locationInfo.push({
+         name: curr.name,
+         locationId: curr.id
+      });
+   }
+   let residentsData = null;
+   if (selected.residents && selected.residents.length > 0) {
+      residentsData = await fetchResidents(selected.residents);
+   }
+   res.render("explore.ejs", {
+      locations: locationInfo,
+      residents: residentsData,
+      selected,
       active: "explore"
    });
 });
