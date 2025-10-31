@@ -13,7 +13,7 @@ body {
   gap: 20px;
   background-color: #415558;
   padding: 20px;
-  border: 1px solid black;
+  border: 2px solid black;
 }
 
 #navDiv a {
@@ -43,7 +43,7 @@ body {
   background: white; 
   backdrop-filter: blur(4px); 
   box-shadow: 0 0 20px rgba(0,0,0,0.30);
-  border: 1px solid black;
+  border: 3px solid black;
 }
 
 #column {
@@ -59,9 +59,20 @@ body {
 #cards {
   width: 70%;
   height: 100%;
-  border: 1px solid black;
+  border: 3px solid black;
 }
 
 #locationForm {
   display: flex;
+}
+
+#footerDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #415558;
+  color: white;
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid black;
 }
