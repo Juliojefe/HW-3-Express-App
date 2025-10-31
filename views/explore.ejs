@@ -16,7 +16,7 @@
 
 <div class="container mt-4 p-4 rounded-4" id="cardContainer">
   <div class="d-flex flex-column align-items-center" id="column">
-    <h3>Search by location</h3>
+    <h2>Search by location</h2>
     <form id="locationForm" action="/explore/location" method="GET">
       <select name="locationId" class="form-select w-auto">
         <option value="">Select One</option>
@@ -30,14 +30,15 @@
     <% if (selected) { %>
       <br>
       <div class="mt-4 text-center">
-        <h6>Results for <%= selected.name %></h6>
-        <p> Type: <%= selected.type %></p>
-        <p> Dimension: <%= selected.dimension %></p>
+        <h3>Results for <%= selected.name %></h3>
+        <h4> Type: <%= selected.type %></h4>
+        <h4> Dimension: <%= selected.dimension %></h4>
       </div>
+      <br>
     <% } %>
 
     <% if (residents && residents.length > 0) { %>
-      <h7>Residents of <%= selected.name %></h7>
+      <h3>Residents of <%= selected.name %></h3>
       <% residents.forEach(char => { %>
         <div class="mb-4 d-flex justify-content-center" id="centerPiece">
           <%- include("partials/charCard.ejs", { character: char }) %>
